@@ -13,9 +13,12 @@ const globalStyles = createGlobalStyle`
     body{
         font-family: 'Noto Sans KR', sans-serif;
         font-size:12px;
-        background-color:rgba(20, 20, 20, 1);
+        background:linear-gradient(to bottom, rgb(36,44,57), rgb(26,30,39));    
         color:white;
-        padding-top: 50px;
+        padding-left: 230px;
+    }
+    ul{
+        list-style:none;
     }
 `;
 export default globalStyles;
