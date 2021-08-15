@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import HighlightContent from './HighlightContent';
 
 const HighlightContainer = styled.section`
     display: flex;
@@ -24,39 +25,6 @@ const Highlight = styled.div`
     align-content: center;
     justify-content: center;
 `
-const HighlightContent = styled.div`
-    margin: 0 15px;
-    width:27%;
-    border-radius: 7px;
-    height:100%;
-    background-color: #293143;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-const ContentColorBorder = styled.div`
-    width:50px;
-    height:50px;
-    border-radius: 25px;
-    border: 1px solid grey;
-    padding: 9px 0 0 9px;
-`
-const ContentColor = styled.div`
-    width:30px;
-    height:30px;
-    border-radius: 25px;
-    background-color:#eaaf49;
-`
-const Content = styled.div`
-    margin-left:15px;
-`
-const ContentTitle = styled.div`
-    color:grey;
-`
-const ContentData = styled.div`
-    margin-top:6px;
-    font-size: 24px;
-`
 function HighLight(){
     return (
         <HighlightContainer>
@@ -64,33 +32,9 @@ function HighLight(){
                 <EmptyTop/>
             </EmptyLeft>
             <Highlight>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>A Company</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>B Company</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>C Company</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
+                <HighlightContent color="#eaaf49" companNm="A Company" data="100K"/>
+                <HighlightContent color="#4d90e0" companNm="B Company" data="41K"/>
+                <HighlightContent color="#b417b7" companNm="C Company" data="51K"/>
             </Highlight>
             <EmptyRight>
                 <EmptyTop/>
