@@ -6,11 +6,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import ReactApexChart from 'react-apexcharts'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 const Top = styled.section`
     display: flex;
 `;
 const Home = styled.div`
-    height:100vh;
+    height:100%;
 `
 const Title = styled.div`
     margin: 40px;
@@ -106,32 +113,8 @@ const ContentData = styled.div`
     margin-top:6px;
     font-size: 24px;
 `
-const TableContainer = styled.section`
-    margin :30px 40px;
-`
-const Table = styled.table`
-    margin-top: 24px;
-    width:100%;
-    color: grey;
-`
-const Thead = styled.thead`    
-    font-size: 16px;
-    font-weight: 700;
-`
-const Th = styled.th`
-    height:30px;`
-const Tbody = styled.tbody`
-    color:white;
-    font-size: 14px;
-    text-align: center;
-`
-const Tr = styled.tr`
-    background-color: #333f56;
-    height:40px;
-    margin:10px 0 ;
-`
-const Td = styled.td`    
-    margin: 10px 0;
+const TableContainerR = styled.section`
+    margin :40px 40px;
 `
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -209,7 +192,42 @@ const BootstrapInput = withStyles((theme) => ({
         },
     }
 }
-const HomeContainer = () => (
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+      color: 'grey',
+      border: 'none'
+    },
+    body: {
+      fontSize: 14,
+      color: 'white',
+      border: 'none',
+      margin: '5px 0'
+    },
+  }))(TableCell);
+  const StyledTableRow = withStyles((theme) => ({
+      
+    root: {
+        borderRadius: '7px',
+        backgroundColor: '#333f56',
+        gap: '10px'
+    },
+    body: {
+
+    }
+    
+  }))(TableRow);
+  function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+  }
+  
+  const rows = [
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+  ];
+const HomePresenter = () => (
     <Home>
         <Top>
             <Title>HOME</Title>
@@ -278,73 +296,36 @@ const HomeContainer = () => (
                 <EmptyTop/>
             </EmptyRight>
         </HighlightContainer>
-        <TableContainer>
+        <TableContainerR>
             <SubTitle>PENDEINTE DE EXPEDICION</SubTitle>
-            <Table>
-                <Thead>
-                    <Th>YEAR</Th>
-                    <Th>UUID</Th>
-                    <Th>COMPANY</Th>
-                    <Th>PEDIDO</Th>
-                    <Th>ITEM</Th>
-                    <Th>ADDRESS</Th>
-                    <Th>COUNT</Th>
-                    <Th>UME</Th>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td>2018</Td>
-                        <Td>47581958</Td>
-                        <Td>Carrefour Express</Td>
-                        <Td>492012</Td>
-                        <Td>4</Td>
-                        <Td>Nombre articulo</Td>
-                        <Td>12</Td>
-                        <Td>UND</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>2018</Td>
-                        <Td>47581958</Td>
-                        <Td>Carrefour Express</Td>
-                        <Td>492012</Td>
-                        <Td>4</Td>
-                        <Td>Nombre articulo</Td>
-                        <Td>12</Td>
-                        <Td>UND</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>2018</Td>
-                        <Td>47581958</Td>
-                        <Td>Carrefour Express</Td>
-                        <Td>492012</Td>
-                        <Td>4</Td>
-                        <Td>Nombre articulo</Td>
-                        <Td>12</Td>
-                        <Td>UND</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>2018</Td>
-                        <Td>47581958</Td>
-                        <Td>Carrefour Express</Td>
-                        <Td>492012</Td>
-                        <Td>4</Td>
-                        <Td>Nombre articulo</Td>
-                        <Td>12</Td>
-                        <Td>UND</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>2018</Td>
-                        <Td>47581958</Td>
-                        <Td>Carrefour Express</Td>
-                        <Td>492012</Td>
-                        <Td>4</Td>
-                        <Td>Nombre articulo</Td>
-                        <Td>12</Td>
-                        <Td>UND</Td>
-                    </Tr>
-                </Tbody>
-            </Table>
-        </TableContainer>
+            
+            <TableContainer>
+      <Table aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+            <StyledTableCell align="right">Calories</StyledTableCell>
+            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <StyledTableRow key={row.name}>
+              <StyledTableCell component="th" scope="row">
+                {row.name}
+              </StyledTableCell>
+              <StyledTableCell align="right">{row.calories}</StyledTableCell>
+              <StyledTableCell align="right">{row.fat}</StyledTableCell>
+              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+        </TableContainerR>
     </Home>
 )
-export default HomeContainer;
+export default HomePresenter;

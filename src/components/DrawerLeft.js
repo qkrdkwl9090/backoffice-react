@@ -33,7 +33,7 @@ const Item = styled.li`
     font-weight:bold;
     font-size:14px;
     padding-left:30px;
-    transition: border-bottom .5s ease-in-out;
+    transition: border-left .5s ease-in-out;
     :hover{
         color:white;
     }
@@ -42,7 +42,7 @@ const SLink = styled(Link)`
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 
 `;
 const Profile = styled.div`
@@ -72,13 +72,16 @@ export default withRouter(({location: {pathname}}) => (
         </Profile>
         <List>
             <Item current={pathname === "/"}>
-                <SLink to="/">Home</SLink>
+                <SLink to="/">HOME</SLink>
             </Item>
-            <Item current={pathname === "/tv"}>
-                <SLink to="/a">A</SLink>
+            <Item current={pathname === "/account"}>
+                <SLink to="/account">ACCOUNT</SLink>
             </Item>
-            <Item current={pathname === "/search"}>
-                <SLink to="/b">B</SLink>
+            <Item current={pathname === "/company"}>
+                <SLink to="/company">COMPANY</SLink>
+            </Item>
+            <Item current={pathname === "/product"}>
+                <SLink to="/product">PRODUCT</SLink>
             </Item>
         </List>
     </DrawerLeft>
