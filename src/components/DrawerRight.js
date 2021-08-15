@@ -5,7 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/CheckCircle';
 import FavoriteBorder from '@material-ui/icons/CheckCircleOutline';
 import FormGroup from '@material-ui/core/FormGroup';
-import theme from 'components/Theme';
+import Filter from 'assets/images/filter.svg'
 const DrawerRight = styled.header`
     color:white;
     position: fixed;
@@ -23,6 +23,7 @@ const DrawerRight = styled.header`
 
 const Category = styled.ul`
     margin: 24px auto 24px;
+    display: flex;
 `;
 
 const Item = styled.li`
@@ -56,9 +57,14 @@ const Option = styled.li`
     margin: 25px 0;
     color:white;
 `;
+const Img = styled.img`
+    margin: 0 12px;
+    width:26px;
+`
 const DrawerOption = () => (
     <DrawerRight>
         <Category>
+            <Img src={Filter} alt="Filter"/>
             <Item>FILTERS</Item>
             <Item>OPTIONS</Item>
         </Category>
