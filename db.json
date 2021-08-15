@@ -1,0 +1,24 @@
+{
+    "chartData": [  
+        {
+            "name": "A Company",
+            "data": [31, 40, 28, 51, 42, 109, 100]
+        }, {
+            "name": "B Company",
+            "data": [11, 32, 45, 32, 34, 52, 41]
+        }, {
+            "name": "C Company",
+            "data": [21, 42, 41, 22, 11, 42, 51]
+        }
+    ],
+    "company": [
+        { "id": 1, "name": "A Company", "onwerId": "1" },
+        { "id": 2, "name": "B Company", "onwerId": "2" },
+        { "id": 3, "name": "C Company", "onwerId": "3" }
+    ],
+    "account": [
+        { "id": 1, "name": "Test A", "birthday": "19900909", "companyId": "1" },
+        { "id": 2, "name": "Test B", "birthday": "19800809", "companyId": "2" },
+        { "id": 3, "name": "Test C", "birthday": "19900909", "companyId": "3" }
+    ]
+  }

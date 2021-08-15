@@ -5,13 +5,14 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
-import ReactApexChart from 'react-apexcharts'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Chart from 'components/Chart';
+import HighLight from 'components/Highlight';
 
 const Top = styled.section`
     display: flex;
@@ -43,6 +44,8 @@ const Menu = styled.li`
     color: #74d4ed;
     padding :10px 15px;
     border-radius: 25px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
     &:hover{
         background-color: #74d4ed;
         color:rgb(36,44,57);
@@ -53,66 +56,7 @@ const ChartContainer = styled.section`
     flex-direction:column;
     align-items: center;
 `
-const HighlightContainer = styled.section`
-    display: flex;
-    margin: 40px;
-`
-const EmptyLeft = styled.div`
-    width:30%;
-    height:80px;
-    border-right: 1px solid grey;
-`
-const EmptyRight = styled.div`
-    width:30%;
-    height:80px;
-    border-left: 1px solid grey;
-`
-const EmptyTop = styled.div`
-    height:40px;
-    border-bottom: 1px solid grey;
-`
 
-const Highlight = styled.div`
-    width:100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-`
-const HighlightContent = styled.div`
-    margin: 0 15px;
-    width:27%;
-    border-radius: 7px;
-    height:100%;
-    background-color: #293143;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-const ContentColorBorder = styled.div`
-    width:50px;
-    height:50px;
-    border-radius: 25px;
-    border: 1px solid grey;
-    padding: 9px 0 0 9px;
-`
-const ContentColor = styled.div`
-    width:30px;
-    height:30px;
-    border-radius: 25px;
-    background-color:#eaaf49;
-`
-const Content = styled.div`
-    margin-left:15px;
-
-`
-const ContentTitle = styled.div`
-    color:grey;
-    
-`
-const ContentData = styled.div`
-    margin-top:6px;
-    font-size: 24px;
-`
 const TableContainerR = styled.section`
     margin :40px 40px;
 `
@@ -134,64 +78,7 @@ const BootstrapInput = withStyles((theme) => ({
         },
     },
   }))(InputBase);
-  const chartData = {
-    series: [{
-        name: 'series1',
-        data: [31, 40, 28, 51, 42, 109, 100]
-      }, {
-        name: 'series2',
-        data: [11, 32, 45, 32, 34, 52, 41]
-      }, {
-        name: 'series3',
-        data: [21, 42, 41, 22, 11, 42, 51]
-      }],
-      options: {
-        chart: {
-          height: 350,
-          width: 1250,
-          type: 'area',          
-          toolbar: {
-            show:false,
-          },
-        },
-        dataLabels:{
-            enabled:false
-        },
-        colors:['#eaaf49', '#4d90e0', '#b417d7'],
-        stroke: {
-          curve: 'smooth'
-        },
-        legend: {
-            labels:{
-                colors: 'white'
-            }
-        },
-        xaxis: {
-          type: 'datetime',
-          labels: {
-              style:{
-                  fontSize:'15px',
-                  colors:'grey'
-              },
-          },
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
-        yaxis: {
-            labels:{
-                style:{                    
-                  fontSize:'15px',
-                  colors:'grey'
-                }
-            }
-        },
-        tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
-          theme:'dark'
-        },
-    }
-}
+  
 const StyledTableCell = withStyles((theme) => ({
     head: {
       color: 'grey',
@@ -227,7 +114,7 @@ const StyledTableCell = withStyles((theme) => ({
     createData('Cupcake', 305, 3.7, 67, 4.3),
     createData('Gingerbread', 356, 16.0, 49, 3.9),
   ];
-const HomePresenter = () => (
+const HomePresenter = ({data}) => (
     <Home>
         <Top>
             <Title>HOME</Title>
@@ -237,68 +124,29 @@ const HomePresenter = () => (
                 id="demo-simple-select-outlined"
                   value={10}
                 //   onChange={handleChange}
-                label="Age"
+                label="Area Chart"
                 input={<BootstrapInput/>}
                 >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={10}>Area Chart</MenuItem>
+                <MenuItem value={20}>Line Chart</MenuItem>
+                <MenuItem value={30}>Candle Chart</MenuItem>
                 </Select>
         </FormControl>
         </Top>
         <ChartContainer>
             <ChartTop>                
-                <SubTitle>EXPEDICION</SubTitle>
+                <SubTitle>DASHBOARD</SubTitle>
                 <ChartMenu>
-                    <Menu>Dia</Menu>
-                    <Menu>Semana</Menu>
-                    <Menu>Mes</Menu>
-                    <Menu>Ano</Menu>
+                    <Menu>A Company</Menu>
+                    <Menu>B Company</Menu>
+                    <Menu>C Company</Menu>
                 </ChartMenu>
             </ChartTop>
-            <ReactApexChart options={chartData.options} series={chartData.series} type="area" height={chartData.options.chart.height} width={chartData.options.chart.width}/>
+            <Chart data={data}/>
         </ChartContainer>
-        <HighlightContainer>
-            <EmptyLeft>
-                <EmptyTop/>
-            </EmptyLeft>
-            <Highlight>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>Series1</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>Series2</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
-                <HighlightContent>
-                    <ContentColorBorder>
-                        <ContentColor/>
-                    </ContentColorBorder>
-                    <Content>
-                        <ContentTitle>Series3</ContentTitle>
-                        <ContentData>300K</ContentData>
-                    </Content>
-                </HighlightContent>
-
-            </Highlight>
-            <EmptyRight>
-                <EmptyTop/>
-            </EmptyRight>
-        </HighlightContainer>
+        <HighLight/>
         <TableContainerR>
-            <SubTitle>PENDEINTE DE EXPEDICION</SubTitle>
-            
+            <SubTitle>PENDEINTE DE EXPEDICION</SubTitle>            
             <TableContainer>
       <Table aria-label="customized table">
         <TableHead>
