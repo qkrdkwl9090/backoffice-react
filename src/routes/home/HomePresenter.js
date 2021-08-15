@@ -13,6 +13,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Chart from 'components/Chart';
 import HighLight from 'components/Highlight';
+import ChartImg from 'assets/images/chart.svg';
+import TableImg from 'assets/images/table.svg';
 
 const Top = styled.section`
     display: flex;
@@ -26,8 +28,12 @@ const Title = styled.div`
     font-weight: 700;
 `
 const SubTitle = styled.div`
+    display: flex;
     font-size: 20px;
     font-weight: 700;
+`
+const Img = styled.img`
+    margin-right: 5px;
 `
 const ChartTop = styled.div`
     margin: 40px 0 20px;
@@ -135,7 +141,10 @@ const HomePresenter = ({data}) => (
         </Top>
         <ChartContainer>
             <ChartTop>                
-                <SubTitle>DASHBOARD</SubTitle>
+                <SubTitle>
+                    <Img src={ChartImg} alt="ChartImg" />
+                    DASHBOARD
+                </SubTitle>
                 <ChartMenu>
                     <Menu>A Company</Menu>
                     <Menu>B Company</Menu>
@@ -146,7 +155,10 @@ const HomePresenter = ({data}) => (
         </ChartContainer>
         <HighLight/>
         <TableContainerR>
-            <SubTitle>PENDEINTE DE EXPEDICION</SubTitle>            
+            <SubTitle>                
+                <Img src={TableImg} alt="TableImg" />
+                PENDEINTE DE EXPEDICION
+            </SubTitle>            
             <TableContainer>
       <Table aria-label="customized table">
         <TableHead>
