@@ -2,7 +2,6 @@
 import ReactApexChart from 'react-apexcharts'
 
 function Chart({data}){
-    console.log(data);
     const chartData = {
         series: data,
           options: {

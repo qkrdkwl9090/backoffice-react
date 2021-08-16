@@ -4,8 +4,8 @@ import Home from "routes/home";
 import Account from "routes/account";
 import Company from "routes/company";
 import Product from "routes/product";
-import DrawerLeft from "components/DrawerLeft";
-import DrawerRight from "./DrawerRight";
+import DrawerLeft from "components/Drawer/DrawerLeft";
+import DrawerRight from "components/Drawer/DrawerRight";
 
 const PageRouter = () => (
     <Router>

@@ -11,8 +11,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Chart from 'components/Chart';
-import HighLight from 'components/Highlight';
+import Chart from 'components/Home/Chart';
+import HighLight from 'components/Home/Highlight';
 import ChartImg from 'assets/images/chart.svg';
 import TableImg from 'assets/images/table.svg';
 
