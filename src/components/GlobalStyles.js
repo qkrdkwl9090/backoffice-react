@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"; 
+import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
@@ -16,10 +16,10 @@ const globalStyles = createGlobalStyle`
         
         font-family: 'Noto Sans KR', sans-serif;
         font-size:12px;
-        background:linear-gradient(to bottom, rgb(36,44,57), rgb(26,30,39));    
-        color:white;
+        background:white;    
+        color:black;
         padding-left: 230px;
-        padding-right: 350px;
+
     }
     ul{
         list-style:none;
